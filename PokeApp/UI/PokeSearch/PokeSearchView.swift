@@ -14,23 +14,26 @@ struct PokeSearchView: View {
 
     var body: some View {
         VStack {
-            Text("Pokemon").font(.largeTitle).bold()
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Pokemon")
+                    .font(.largeTitle)
+                    .bold()
 
-            HStack {
-                TextField("検索するポケモンの図鑑番号", text: $numberString)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .overlay(RoundedRectangle(cornerRadius:4).stroke(Color.black, lineWidth: 1))
-                Button(action: {
-                    viewModel.seacrh(id: Int(numberString) ?? 0)
-                }, label: {
-                    Text("検索")
-                        .foregroundColor(Color.black)
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 6)
-                }).overlay(RoundedRectangle(cornerRadius:4).stroke(Color.black, lineWidth: 1))
-            }.padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                HStack {
+                    TextField("検索するポケモンの図鑑番号", text: $numberString)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .overlay(RoundedRectangle(cornerRadius:4).stroke(Color.black, lineWidth: 1))
+                    Button(action: {
+                        viewModel.seacrh(id: Int(numberString) ?? 0)
+                    }, label: {
+                        Text("検索")
+                            .foregroundColor(Color.black)
+                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 6)
+                    }).overlay(RoundedRectangle(cornerRadius:4).stroke(Color.black, lineWidth: 1))
+                }
+                .padding(.trailing, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
 
-            VStack(alignment: .leading, spacing: 20) {
-                HStack(alignment: .top, spacing: 20) {
+                HStack {
                     Text("No.")
                     Text(String(viewModel.entity.id))
                 }
@@ -39,6 +42,8 @@ struct PokeSearchView: View {
                     Text(viewModel.entity.name)
                 }
             }
+            .padding(.leading, 20)
+            .padding(.top, 20)
 
             if let imageData = viewModel.loadData {
                 Image(uiImage: UIImage(data: imageData)!)
@@ -47,6 +52,8 @@ struct PokeSearchView: View {
                 Image(uiImage: UIImage(systemName: "iphone.homebutton.slash")!)
                     .frame(width: 300, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
+
+            Divider()
 
             Spacer()
         }
