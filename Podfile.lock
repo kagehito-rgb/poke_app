@@ -1,0 +1,16 @@
+PODS:
+  - PokemonAPI (6.0.2)
+
+DEPENDENCIES:
+  - PokemonAPI
+
+SPEC REPOS:
+  trunk:
+    - PokemonAPI
+
+SPEC CHECKSUMS:
+  PokemonAPI: bff9656c1825288e7f028b415ce6276122ad4c6a
+
+PODFILE CHECKSUM: f60950fcff8510cfbc505f9888b94d3d39e6a4cc
+
+COCOAPODS: 1.9.3
